@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src https://*.supabase.co; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>Coaching data sign-in</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Coaching data</h1>
+
+    <p id="message" role="status"></p>
+
+    <form id="signin" hidden>
+      <p>Sign in to let an app read your coaching data.</p>
+      <label>Email <input id="email" type="email" autocomplete="username" required></label>
+      <label>Password <input id="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Sign in</button>
+    </form>
+
+    <section id="consent" hidden>
+      <p><strong id="client"></strong> wants <strong>read-only</strong> access to your coaching data.</p>
+      <dl>
+        <dt>It will be sent back to</dt><dd id="redirect"></dd>
+        <dt>Signed in as</dt><dd id="who"></dd>
+      </dl>
+      <p class="hint">Only allow this if you just started connecting this app yourself.</p>
+      <div class="buttons">
+        <button id="deny" type="button" class="secondary">Deny</button>
+        <button id="allow" type="button">Allow</button>
+      </div>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="vendor/supabase-js-2.119.0.js"></script>
+  <script src="consent.js"></script>
+</body>
+</html>
